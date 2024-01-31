@@ -31,7 +31,7 @@
     </label>
     <label>
       Price:
-      <input type="number" step="0.01" max="9" name="price"/>
+      <input type="number" step="0.01" name="price"/>
     </label>
     <label>
       Image:
