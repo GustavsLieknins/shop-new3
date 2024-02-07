@@ -27,7 +27,9 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect("/products");
+        session()->flash("success", "You have been registered");
+
+        return redirect("/login");
 
         // dd($request->email);
     }
@@ -35,5 +37,19 @@ class UserController extends Controller
     public function login()
     {
         return view("users.login");
+    }
+
+    public function signin(Request $request)
+    {
+        $request->validate([
+            "username" => ["required"],
+            "password" => ["required"]
+        ]);
+
+        if( auth()->attempt(["name" => $request->username,"password" =>  $request->password])){
+            return redirect("/products");
+        }else{
+            echo "kys";
+        }
     }
 }

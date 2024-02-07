@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login now</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body>
     <h1>Login</h1>
@@ -25,5 +26,15 @@
       @enderror
       <button>Submit</button>
     </form>
+    
+    <div x-data="{ open: true }">
+ 
+    <div x-show="open">
+    <button @click="open = false">Close</button>
+    @if (session()->has("success"))
+      <p>{{ session("success") }}</p>
+    @endif
+    </div>
+</div>
 </body>
 </html>
